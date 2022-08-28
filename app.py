@@ -1,11 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask
 
 app = Flask(__name__)
+app.static_folder = 'static'
+app.config['SECRET_KEY'] = "secret-ket"
 
-@app.route('/')
-@app.route('/index')
-def index():
-    return render_template('index.html')
+from routes import *
 
 if __name__ == '__main__':
     app.run(debug=True)
