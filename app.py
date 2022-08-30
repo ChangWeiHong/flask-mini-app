@@ -1,8 +1,11 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.static_folder = 'static'
 app.config['SECRET_KEY'] = "secret-ket"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+
+db = SQLAlchemy(app)
 
 from routes import *
 
